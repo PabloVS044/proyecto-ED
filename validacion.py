@@ -10,9 +10,7 @@ import numpy as np
 from typing import Callable
 
 
-# ============================================================================
 # EDO DE PRIMER ORDEN
-# ============================================================================
 
 def edo_primer_orden():
     """
@@ -68,10 +66,7 @@ def derivar_solucion_primer_orden():
     Solución particular: y(t) = (1/2)t - 1/4 + (5/4)e^(-2t)
     """
 
-
-# ============================================================================
 # EDO DE SEGUNDO ORDEN
-# ============================================================================
 
 def edo_segundo_orden():
     """
@@ -143,10 +138,7 @@ def derivar_solucion_segundo_orden():
     """
 
 
-# ============================================================================
 # SISTEMA 2×2 LINEAL
-# ============================================================================
-
 def sistema_2x2_lineal():
     """
     Sistema desacoplado:
@@ -207,9 +199,7 @@ def derivar_solucion_sistema_lineal():
     """
 
 
-# ============================================================================
 # FUNCIONES AUXILIARES PARA VALIDACIÓN
-# ============================================================================
 
 def ejecutar_validacion_completa(metodo, nombre_metodo: str, h: float = 0.01):
     """

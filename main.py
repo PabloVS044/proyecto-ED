@@ -8,7 +8,7 @@ Este script ejecuta todo el proyecto:
 3. Resolución de sistemas no lineales
 4. Generación de gráficos y tablas
 
-Autores: [Nombres de los integrantes]
+Autores: Pablo Vásquez, Vernel Hernández, Jonathán Tubac
 Fecha: Noviembre 2025
 """
 
@@ -28,14 +28,12 @@ plt.rcParams['lines.linewidth'] = 2
 
 
 def imprimir_encabezado(titulo):
-    """Imprime un encabezado formateado"""
     print("\n" + "="*80)
     print(titulo.center(80))
     print("="*80 + "\n")
 
 
 def tabla_convergencia(resultados, nombre_edo):
-    """Imprime tabla de convergencia"""
     print(f"\nTabla de Convergencia - {nombre_edo}")
     print("-" * 70)
     print(f"{'Paso (h)':<15} {'Error Máximo':<20} {'Error L2':<20}")
@@ -47,12 +45,9 @@ def tabla_convergencia(resultados, nombre_edo):
     print("-" * 70)
 
 
-# ============================================================================
-# PARTE 1: VALIDACIÓN CON SOLUCIONES ANALÍTICAS
-# ============================================================================
+# VALIDACIÓN CON SOLUCIONES ANALÍTICAS
 
 def parte1_validacion():
-    """Ejecuta la validación completa con ambos métodos"""
     imprimir_encabezado("PARTE 1: VALIDACIÓN CON SOLUCIONES ANALÍTICAS")
     
     # Validar Euler
@@ -62,12 +57,9 @@ def parte1_validacion():
     ejecutar_validacion_completa(rk4, "MÉTODO DE RUNGE-KUTTA 4", h=0.01)
 
 
-# ============================================================================
-# PARTE 2: ESTUDIO DE CONVERGENCIA
-# ============================================================================
+#ESTUDIO DE CONVERGENCIA
 
 def parte2_convergencia():
-    """Realiza estudio de convergencia variando el tamaño de paso"""
     imprimir_encabezado("PARTE 2: ESTUDIO DE CONVERGENCIA")
     
     # Tamaños de paso a probar
@@ -76,9 +68,7 @@ def parte2_convergencia():
     print("Tamaños de paso a evaluar:", tamaños_paso)
     
     # 1. EDO de primer orden
-    print("\n" + "="*80)
     print("1. CONVERGENCIA - EDO DE PRIMER ORDEN")
-    print("="*80)
     f1, sol1, t0_1, y0_1 = edo_primer_orden()
     
     print("\nMétodo de Euler:")
@@ -92,9 +82,7 @@ def parte2_convergencia():
     tabla_convergencia(conv_rk4_1, "RK4 - Primer Orden")
     
     # 2. EDO de segundo orden
-    print("\n" + "="*80)
     print("2. CONVERGENCIA - EDO DE SEGUNDO ORDEN")
-    print("="*80)
     g2, f2, sol2, t0_2, y0_2, yp0_2 = edo_segundo_orden()
     Y0_2 = np.array([y0_2, yp0_2])
     
@@ -109,9 +97,7 @@ def parte2_convergencia():
     tabla_convergencia(conv_rk4_2, "RK4 - Segundo Orden")
     
     # 3. Sistema 2x2
-    print("\n" + "="*80)
     print("3. CONVERGENCIA - SISTEMA 2×2 LINEAL")
-    print("="*80)
     f3, sol3, t0_3, X0_3 = sistema_2x2_lineal()
     
     print("\nMétodo de Euler:")
@@ -131,9 +117,7 @@ def parte2_convergencia():
     }
 
 
-# ============================================================================
-# PARTE 3: SISTEMAS NO LINEALES
-# ============================================================================
+#SISTEMAS NO LINEALES
 
 def parte3_sistemas_no_lineales():
     """Resuelve los sistemas no lineales con ambos métodos"""
@@ -143,9 +127,7 @@ def parte3_sistemas_no_lineales():
     tf = 50.0  # Tiempo final
     
     # 1. Lotka-Volterra
-    print("\n" + "="*80)
     print("1. MODELO DE LOTKA-VOLTERRA (PREDADOR-PRESA)")
-    print("="*80)
     
     print("\nResolviendo con Método de Euler...")
     lv_euler = resolver_sistema_no_lineal('lotka-volterra', euler, 'Euler', h, tf)
@@ -173,9 +155,7 @@ def parte3_sistemas_no_lineales():
     print(f"Predadores mínimo: {lv_rk4['analisis']['predadores']['minimo']:.4f}")
     
     # 2. Modelo SIR
-    print("\n" + "="*80)
     print("2. MODELO SIR DE EPIDEMIAS")
-    print("="*80)
     
     print("\nResolviendo con Método de Euler...")
     sir_euler = resolver_sistema_no_lineal('sir', euler, 'Euler', h, tf)
@@ -204,9 +184,7 @@ def parte3_sistemas_no_lineales():
     }
 
 
-# ============================================================================
-# FUNCIÓN PRINCIPAL
-# ============================================================================
+#FUNCIÓN PRINCIPAL
 
 def main():
     """Función principal que ejecuta todo el proyecto"""
@@ -231,15 +209,11 @@ def main():
         # Resumen final
         imprimir_encabezado("EJECUCIÓN COMPLETADA EXITOSAMENTE ✓")
         print("Todos los cálculos han sido completados.")
-        print("\nPróximos pasos:")
-        print("1. Ejecutar visualizacion.py para generar gráficos")
-        print("2. Compilar resultados en el informe")
-        print("3. Documentar la bitácora de uso de IA")
         
         return resultados_convergencia, resultados_no_lineales
         
     except Exception as e:
-        print(f"\n❌ ERROR: {e}")
+        print(f"\n ERROR: {e}")
         import traceback
         traceback.print_exc()
         return None, None
@@ -249,6 +223,3 @@ if __name__ == "__main__":
     # Ejecutar proyecto completo
     conv, no_lin = main()
     
-    print("\n" + "="*80)
-    print("Para generar gráficos, ejecute: python visualizacion.py")
-    print("="*80)

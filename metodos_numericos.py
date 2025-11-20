@@ -173,9 +173,7 @@ def edo_segundo_orden_a_sistema(g: Callable, y0: float, yp0: float) -> Tuple[Cal
     return f_sistema, condiciones_iniciales
 
 
-# ============================================================================
 # FUNCIONES DE UTILIDAD
-# ============================================================================
 
 def calcular_error(y_numerica: np.ndarray, y_analitica: np.ndarray, 
                    norma: str = 'max') -> float:

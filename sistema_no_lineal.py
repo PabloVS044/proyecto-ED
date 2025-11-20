@@ -11,9 +11,7 @@ import numpy as np
 from typing import Tuple, Dict
 
 
-# ============================================================================
 # MODELO DE LOTKA-VOLTERRA (PREDADOR-PRESA)
-# ============================================================================
 
 def lotka_volterra(parametros: Dict[str, float] = None):
     """
@@ -161,9 +159,7 @@ def analisis_lotka_volterra(X: np.ndarray, t: np.ndarray, params: Dict[str, floa
     return analisis
 
 
-# ============================================================================
-# MODELO SIR DE EPIDEMIAS (SIMPLIFICADO)
-# ============================================================================
+#MODELO SIR DE EPIDEMIAS (SIMPLIFICADO)
 
 def modelo_sir(parametros: Dict[str, float] = None):
     """
@@ -311,9 +307,7 @@ def analisis_sir(X: np.ndarray, t: np.ndarray, params: Dict[str, float]):
     return analisis
 
 
-# ============================================================================
-# FUNCIÓN PRINCIPAL PARA RESOLVER SISTEMAS NO LINEALES
-# ============================================================================
+#FUNCIÓN PRINCIPAL PARA RESOLVER SISTEMAS NO LINEALES
 
 def resolver_sistema_no_lineal(sistema: str, metodo, nombre_metodo: str,
                                h: float = 0.01, tf: float = 50.0,
